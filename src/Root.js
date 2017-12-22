@@ -4,12 +4,13 @@ import { View, Text, StyleSheet } from 'react-native'
 import SignIn from './auth/SignIn'
 import { eventList } from './fixtures'
 import EventsScreen from './events/EventsScreen'
+import EventList from './events/EventList'
 
 class Root extends React.Component {
     static defaultProps = {}
 
     render() {
-        return <EventsScreen event={eventList[0]} />
+        return <EventList events={eventList} />
     }
 }
 
