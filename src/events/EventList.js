@@ -14,17 +14,19 @@ class EventList extends React.Component<Props, State> {
 
     render() {
         return (
-            <View>
-                <ScrollView>
-                    {this.props.events.map(event => (
-                        <EventCard key={event.uid} event={event} />
-                    ))}
-                </ScrollView>
-            </View>
+            <ScrollView style={styles.scrollView}>
+                {this.props.events.map(event => (
+                    <EventCard key={event.uid} event={event} />
+                ))}
+            </ScrollView>
         )
     }
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    scrollView: {
+        flex: 1,
+    },
+})
 
 export default EventList

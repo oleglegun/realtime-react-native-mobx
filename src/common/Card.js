@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
         elevation: 1,
         marginLeft: 5,
         marginRight: 5,
-        marginTop: 25,
-        padding: 30,
+        marginTop: 10,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
     },
 })
 
