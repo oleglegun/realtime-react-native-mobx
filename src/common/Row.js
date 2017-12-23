@@ -6,7 +6,7 @@ type Props = {}
 
 type State = {}
 
-class Card extends React.Component<Props, State> {
+class Row extends React.Component<Props, State> {
     static defaultProps = {}
 
     state = {}
@@ -18,15 +18,13 @@ class Card extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
-        shadowColor: '#ccc',
-        shadowOffset: { width: 1, height: 1 },
-        shadowOpacity: 1,
-
-        marginVertical: 5,
-        marginHorizontal: 10,
+        // height: 50,
+        borderColor: '#eee',
+        borderBottomWidth: 1,
+        borderTopWidth: 1,
+        paddingVertical: 5,
         paddingHorizontal: 20,
-        paddingVertical: 10,
     },
 })
 
-export default Card
+export default Row

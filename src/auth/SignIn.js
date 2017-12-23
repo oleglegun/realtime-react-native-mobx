@@ -26,55 +26,62 @@ class SignIn extends React.Component<Props, State> {
 
     render() {
         return (
-            <KeyboardAvoidingView
-                keyboardVerticalOffset={0}
-                behavior="position"
-                style={styles.container}
+            <ImageBackground
+                source={require('../../assets/images/city-blur.jpg')}
+                style={styles.imageBackground}
+                resizeMode={Image.resizeMode.cover}
             >
-                <View style={styles.box}>
-                    <View style={styles.headerContainer}>
-                        <Text style={styles.headerText}>SIGN IN</Text>
-                    </View>
-                    <View>
-                        <View style={styles.textInputContainer}>
-                            <View style={styles.textInputIcon} />
-                            <TextInput
-                                style={styles.input}
-                                value={this.state.email}
-                                onChangeText={this.changeEmail}
-                                keyboardType="email-address"
-                                placeholder="Email"
-                                placeholderTextColor="white"
-                                autoCapitalize="none"
-                            />
+                <KeyboardAvoidingView
+                    keyboardVerticalOffset={0}
+                    behavior="position"
+                    style={styles.container}
+                >
+                    <View style={styles.box}>
+                        <View style={styles.headerContainer}>
+                            <Text style={styles.headerText}>SIGN IN</Text>
                         </View>
-                        <View style={styles.textInputContainer}>
-                            <View style={styles.textInputIcon} />
-                            <TextInput
-                                style={styles.input}
-                                value={this.state.password}
-                                onChangeText={this.changePassword}
-                                secureTextEntry
-                                keyboardType="phone-pad"
-                                placeholder="Password"
-                                placeholderTextColor="white"
-                            />
+                        <View>
+                            <View style={styles.textInputContainer}>
+                                <View style={styles.textInputIcon} />
+                                <TextInput
+                                    style={styles.input}
+                                    value={this.state.email}
+                                    onChangeText={this.changeEmail}
+                                    keyboardType="email-address"
+                                    placeholder="Email"
+                                    placeholderTextColor="white"
+                                    autoCapitalize="none"
+                                />
+                            </View>
+                            <View style={styles.textInputContainer}>
+                                <View style={styles.textInputIcon} />
+                                <TextInput
+                                    style={styles.input}
+                                    value={this.state.password}
+                                    onChangeText={this.changePassword}
+                                    secureTextEntry
+                                    placeholder="Password"
+                                    placeholderTextColor="white"
+                                />
+                            </View>
+                        </View>
+                        <View>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={this.handleButtonClick}
+                                color="#fff"
+                            >
+                                <Text style={styles.buttonText}>Submit</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.terms}>
+                            <Text style={styles.termsText}>
+                                Terms & Conditions
+                            </Text>
                         </View>
                     </View>
-                    <View>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={this.handleButtonClick}
-                            color="#fff"
-                        >
-                            <Text style={styles.buttonText}>Submit</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.terms}>
-                        <Text style={styles.termsText}>Terms & Conditions</Text>
-                    </View>
-                </View>
-            </KeyboardAvoidingView>
+                </KeyboardAvoidingView>
+            </ImageBackground>
         )
     }
 
@@ -91,11 +98,16 @@ const constants = {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#98514c',
         paddingTop: 30,
         width: '100%',
         flex: 1,
         justifyContent: 'flex-end',
+    },
+
+    imageBackground: {
+        flex: 1,
+        width: '100%',
+        height: 500,
     },
     box: {},
     header: {
@@ -109,12 +121,13 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 30,
         color: 'white',
+        backgroundColor: 'transparent',
         fontFamily: constants.fontFamily,
     },
     textInputContainer: {
         flexDirection: 'row',
         flexBasis: 50,
-        backgroundColor: '#ccc3',
+        backgroundColor: '#ccc4',
         margin: 20,
         borderRadius: 25,
     },
@@ -146,6 +159,7 @@ const styles = StyleSheet.create({
 
     terms: {
         padding: 10,
+        backgroundColor: 'transparent',
     },
     termsText: {
         color: 'white',

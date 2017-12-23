@@ -1,16 +1,14 @@
 /* @flow */
 import * as React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import Card from '../common/Card'
+import { Text, StyleSheet } from 'react-native'
+import Row from '../common/Row'
 import style from '../styles'
 
-type Props = {
-    event: { title: string, where: string, when: string },
-}
+type Props = {}
 
 type State = {}
 
-class EventCard extends React.Component<Props, State> {
+class EventRow extends React.Component<Props, State> {
     static defaultProps = {}
 
     state = {}
@@ -18,11 +16,11 @@ class EventCard extends React.Component<Props, State> {
     render() {
         const { event } = this.props
         return (
-            <Card>
+            <Row>
                 <Text style={styles.title}>{event.title}</Text>
                 <Text>{event.where}</Text>
                 <Text>{event.when}</Text>
-            </Card>
+            </Row>
         )
     }
 }
@@ -34,4 +32,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default EventCard
+export default EventRow
