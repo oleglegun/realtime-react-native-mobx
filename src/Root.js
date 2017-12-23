@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import SignIn from './auth/SignIn'
 import { eventList } from './fixtures'
-import EventsScreen from './events/EventsScreen'
+import EventScreen from './events/EventScreen'
 import EventList from './events/EventList'
 import Style from './styles'
 
@@ -22,7 +22,7 @@ class Root extends React.Component<State> {
     static defaultProps = {}
 
     state = {
-        isSignedIn: true,
+        isSignedIn: false,
     }
 
     render() {
@@ -41,7 +41,7 @@ class Root extends React.Component<State> {
                 <EventList events={eventList} />
             </View>
         ) : (
-            <SignIn />
+            <EventScreen event={eventList[0]} />
         )
     }
 }

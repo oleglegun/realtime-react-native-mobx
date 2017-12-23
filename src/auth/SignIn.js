@@ -11,6 +11,8 @@ import {
     Image,
     ImageBackground,
 } from 'react-native'
+import Style from '../styles'
+
 
 type Props = {}
 
@@ -92,8 +94,7 @@ class SignIn extends React.Component<Props, State> {
 
 const constants = {
     fontFamily: 'Avenir-Black',
-    orange: '#ff762c',
-    green: '#0ba62b',
+
 }
 
 const styles = StyleSheet.create({
@@ -139,13 +140,13 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         fontSize: 20,
         color: 'white',
-        fontFamily: constants.fontFamily,
+        fontFamily: Style.fontFamily,
     },
 
     button: {
         // borderWidth: 1,
         // borderColor: '#fff',
-        backgroundColor: constants.green,
+        backgroundColor: Style.colors.green,
         padding: 10,
         margin: 20,
         borderRadius: 25,
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
         color: '#fff',
-        fontFamily: constants.fontFamily,
+        fontFamily: Style.fontFamily,
     },
 
     terms: {
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     termsText: {
         color: 'white',
         textAlign: 'center',
-        fontFamily: constants.fontFamily,
+        fontFamily: Style.fontFamily,
     },
 })
 
