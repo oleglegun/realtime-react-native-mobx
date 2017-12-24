@@ -3,9 +3,10 @@ import * as React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Card from '../common/Card'
 import style from '../styles'
+import type { Event } from '../types'
 
 type Props = {
-    event: { title: string, where: string, when: string },
+    event: Event,
 }
 
 type State = {}

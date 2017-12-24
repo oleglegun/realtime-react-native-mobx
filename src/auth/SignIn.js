@@ -13,8 +13,9 @@ import {
 } from 'react-native'
 import Style from '../styles'
 
-
-type Props = {}
+type Props = {
+    onSubmit: () => void,
+}
 
 type State = { email: string, password: string }
 
@@ -70,7 +71,7 @@ class SignIn extends React.Component<Props, State> {
                         <View>
                             <TouchableOpacity
                                 style={styles.button}
-                                onPress={this.handleButtonClick}
+                                onPress={this.handleSubmit}
                                 color="#fff"
                             >
                                 <Text style={styles.buttonText}>Submit</Text>
@@ -87,14 +88,13 @@ class SignIn extends React.Component<Props, State> {
         )
     }
 
-    handleButtonClick = () => {}
-    changeEmail = email => this.setState({ email })
-    changePassword = password => this.setState({ password })
+    handleSubmit = () => this.props.onSubmit()
+    changeEmail = (email: string) => this.setState({ email })
+    changePassword = (password: string) => this.setState({ password })
 }
 
 const constants = {
     fontFamily: 'Avenir-Black',
-
 }
 
 const styles = StyleSheet.create({

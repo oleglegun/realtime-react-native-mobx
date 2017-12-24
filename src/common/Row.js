@@ -2,8 +2,9 @@
 import * as React from 'react'
 import { View, StyleSheet } from 'react-native'
 
-type Props = {}
-
+type Props = {
+    children: React.Node
+}
 type State = {}
 
 class Row extends React.Component<Props, State> {
@@ -18,7 +19,6 @@ class Row extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
-        // height: 50,
         borderColor: '#eee',
         borderBottomWidth: 1,
         borderTopWidth: 1,

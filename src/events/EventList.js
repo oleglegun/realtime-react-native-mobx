@@ -4,8 +4,17 @@ import { View, Text, StyleSheet, SectionList } from 'react-native'
 import EventCard from './EventCard'
 import Styles from '../styles'
 import EventRow from './EventRow'
+import type { Event } from '../types'
 
-type Props = {}
+type Section = {
+    data: $ReadOnlyArray<Event>,
+    count: number,
+    title: string,
+}
+
+type Props = {
+    events: Array<Event>,
+}
 
 type State = {}
 
@@ -65,14 +74,15 @@ class EventList extends React.Component<Props, State> {
                 renderItem={this.renderItem}
                 renderSectionHeader={this.renderSectionHeader}
                 sections={sections}
+                keyExtractor={item => item.uid}
             />
         )
     }
 
-    renderItem({ item }) {
-        return <EventRow key={item.uid} event={item} />
+    renderItem({ item }: { item: Event }) {
+        return <EventRow event={item} />
     }
-
+    // $FlowFixMe
     renderSectionHeader({ section }) {
         return (
             <SectionHeader

@@ -12,7 +12,7 @@ import {
 import Style from '../styles'
 
 type Props = {
-    event: {},
+    event: { title: string, when: string, where: string },
 }
 
 type State = {}
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     deleteButton: {
-        height: 50,
+        // height: 50,
         backgroundColor: Style.colors.red,
         borderRadius: 25,
         padding: 10,

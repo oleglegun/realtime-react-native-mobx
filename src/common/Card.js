@@ -2,7 +2,9 @@
 import * as React from 'react'
 import { View, StyleSheet } from 'react-native'
 
-type Props = {}
+type Props = {
+    children: React.Node
+}
 
 type State = {}
 

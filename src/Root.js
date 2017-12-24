@@ -17,8 +17,9 @@ import Style from './styles'
 type State = {
     isSignedIn: boolean,
 }
+type Props = {}
 
-class Root extends React.Component<State> {
+class Root extends React.Component<Props,State> {
     static defaultProps = {}
 
     state = {

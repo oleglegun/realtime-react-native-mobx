@@ -4,7 +4,7 @@ import { Text, StyleSheet } from 'react-native'
 import Row from '../common/Row'
 import style from '../styles'
 
-type Props = {}
+type Props = { event: { title: string, where: string, when: string } }
 
 type State = {}
 
