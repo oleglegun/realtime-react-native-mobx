@@ -1,4 +1,5 @@
 export default {
+    fontFamily: 'Avenir-Black',
     fontFamilyTitle: 'Avenir-Black',
     colors: {
         orange: '#ff762c',

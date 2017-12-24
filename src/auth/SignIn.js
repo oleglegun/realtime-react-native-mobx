@@ -12,20 +12,24 @@ import {
     ImageBackground,
 } from 'react-native'
 import Style from '../styles'
+import { observable } from 'mobx'
+import { observer, inject } from 'mobx-react'
+import AuthStore from '../stores/auth'
 
 type Props = {
     onSubmit: () => void,
+    auth: AuthStore,
 }
 
 type State = { email: string, password: string }
 
+@inject('auth')
+@observer
 class SignIn extends React.Component<Props, State> {
     static defaultProps = {}
 
-    state = {
-        email: '',
-        password: '',
-    }
+    @observable email = ''
+    @observable password = ''
 
     render() {
         return (
@@ -48,7 +52,7 @@ class SignIn extends React.Component<Props, State> {
                                 <View style={styles.textInputIcon} />
                                 <TextInput
                                     style={styles.input}
-                                    value={this.state.email}
+                                    value={this.email}
                                     onChangeText={this.changeEmail}
                                     keyboardType="email-address"
                                     placeholder="Email"
@@ -60,7 +64,7 @@ class SignIn extends React.Component<Props, State> {
                                 <View style={styles.textInputIcon} />
                                 <TextInput
                                     style={styles.input}
-                                    value={this.state.password}
+                                    value={this.password}
                                     onChangeText={this.changePassword}
                                     secureTextEntry
                                     placeholder="Password"
@@ -88,13 +92,9 @@ class SignIn extends React.Component<Props, State> {
         )
     }
 
-    handleSubmit = () => this.props.onSubmit()
-    changeEmail = (email: string) => this.setState({ email })
-    changePassword = (password: string) => this.setState({ password })
-}
-
-const constants = {
-    fontFamily: 'Avenir-Black',
+    handleSubmit = () => this.props.auth.signIn(this.email, this.password)
+    changeEmail = (email: string) => (this.email = email)
+    changePassword = (password: string) => (this.password = password)
 }
 
 const styles = StyleSheet.create({
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: 'white',
         backgroundColor: 'transparent',
-        fontFamily: constants.fontFamily,
+        fontFamily: Style.fontFamily,
     },
     textInputContainer: {
         flexDirection: 'row',
