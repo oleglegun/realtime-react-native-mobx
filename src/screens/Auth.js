@@ -17,14 +17,13 @@ class AuthScreen extends React.Component<Props, State> {
     static navigationOptions = {
         title: 'Sign In',
     }
+
     state = {}
 
     render() {
         return (
             <View style={styles.container}>
-                <SignIn
-                    onSubmit={() => this.props.navigation.navigate('EventList')}
-                />
+                <SignIn />
             </View>
         )
     }

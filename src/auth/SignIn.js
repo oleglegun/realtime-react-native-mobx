@@ -12,13 +12,11 @@ import {
     ImageBackground,
 } from 'react-native'
 import Style from '../styles'
-import { observable } from 'mobx'
+import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
-import AuthStore from '../stores/auth'
 
 type Props = {
-    onSubmit: () => void,
-    auth: AuthStore,
+    auth: { signIn: (email: string, password: string) => void },
 }
 
 type State = { email: string, password: string }
@@ -93,8 +91,8 @@ class SignIn extends React.Component<Props, State> {
     }
 
     handleSubmit = () => this.props.auth.signIn(this.email, this.password)
-    changeEmail = (email: string) => (this.email = email)
-    changePassword = (password: string) => (this.password = password)
+    @action changeEmail = (email: string) => (this.email = email)
+    @action changePassword = (password: string) => (this.password = password)
 }
 
 const styles = StyleSheet.create({

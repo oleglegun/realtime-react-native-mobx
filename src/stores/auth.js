@@ -1,5 +1,5 @@
 /* @flow */
-import { observable, action } from 'mobx'
+import { observable, action, autorun } from 'mobx'
 import firebase from 'firebase'
 import BaseStore from './BaseStore'
 
@@ -8,15 +8,23 @@ class AuthStore extends BaseStore {
 
     constructor(...args: Array<{}>) {
         super(...args)
+
+        autorun(() => {
+            const routeName = this.user ? 'EventList' : 'Auth'
+
+            // navigate to routeName
+            this.getStore('navigation').navigate(routeName)
+        })
     }
 
-    @action
     signIn(email: string, password: string) {
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(user => (this.user = user))
+            .then(this.setUser)
     }
+
+    @action setUser = (user: {}) => (this.user = user)
 }
 
 export default AuthStore
