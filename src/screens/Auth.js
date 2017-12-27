@@ -1,24 +1,15 @@
-/* @flow */
 import * as React from 'react'
 import { View, StyleSheet } from 'react-native'
 import SignIn from '../auth/SignIn'
-// $FlowFixMe
-import type { NavigationScreenProp, NavigationState } from 'react-navigation'
 
-type Props = {
-    navigation: NavigationScreenProp<NavigationState, *>,
-}
+type Props = {}
 
-type State = {}
-
-class AuthScreen extends React.Component<Props, State> {
+class AuthScreen extends React.Component<Props> {
     static defaultProps = {}
 
     static navigationOptions = {
         title: 'Sign In',
     }
-
-    state = {}
 
     render() {
         return (

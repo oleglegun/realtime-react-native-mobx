@@ -2,6 +2,7 @@
 import { observable, action, autorun } from 'mobx'
 import firebase from 'firebase'
 import BaseStore from './BaseStore'
+import '../fbConfig'
 
 class AuthStore extends BaseStore {
     @observable user = null
@@ -10,10 +11,14 @@ class AuthStore extends BaseStore {
         super(...args)
 
         autorun(() => {
-            const routeName = this.user ? 'EventList' : 'Auth'
+            const routeName = this.user ? 'Home' : 'Auth'
 
             // navigate to routeName
             this.getStore('navigation').navigate(routeName)
+
+            if (!this.user) {
+                this.signIn('test@test.com', 'qqqqqqqq')
+            }
         })
     }
 

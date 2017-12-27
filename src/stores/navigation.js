@@ -25,8 +25,6 @@ export default class NavigationStore extends BaseStore {
     }
 
     navigate(routeName) {
-        console.log('---', 'NavigationActions', routeName)
         this.dispatch(NavigationActions.navigate({ routeName }))
     }
 }
-9

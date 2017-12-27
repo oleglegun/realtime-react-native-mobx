@@ -13,17 +13,15 @@ import {
 } from 'react-native'
 import Style from '../styles'
 import { observable, action } from 'mobx'
-import { observer, inject } from 'mobx-react'
+import { observer, inject, type Observer } from 'mobx-react'
 
 type Props = {
     auth: { signIn: (email: string, password: string) => void },
 }
 
-type State = { email: string, password: string }
-
 @inject('auth')
 @observer
-class SignIn extends React.Component<Props, State> {
+class SignIn extends React.Component<Props> {
     static defaultProps = {}
 
     @observable email = ''
