@@ -32,7 +32,7 @@ export function fetchAllHelper(refName: string) {
         firebase
             .database()
             .ref(refName)
-            .limitToFirst(5)
+            .limitToFirst(50)
             .once(
                 'value',
                 action(data => {

@@ -15,11 +15,13 @@ class AuthStore extends BaseStore {
             const routeName = this.user ? 'Lists' : 'Auth'
 
             // navigate to routeName
-            this.getStore('navigation').navigate(routeName)
+            this.getStore('navigation').reset(routeName)
 
-            if (!this.user) {
-                this.signIn('test@test.com', 'qqqqqqqq')
-            }
+            // if (!this.user) {
+            //     this.signIn('test@test.com', 'qqqqqqqq')
+            // }
+
+            firebase.auth().onAuthStateChanged(this.setUser)
         })
     }
 

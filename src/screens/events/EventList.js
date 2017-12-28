@@ -1,6 +1,12 @@
 /* @flow */
 import * as React from 'react'
-import { View, StyleSheet, Text, ActivityIndicator } from 'react-native'
+import {
+    View,
+    StyleSheet,
+    Text,
+    ActivityIndicator,
+    StatusBar,
+} from 'react-native'
 import { inject, observer } from 'mobx-react'
 import EventList from '../../events/EventList'
 import type { Event } from '../../types'
@@ -38,9 +44,10 @@ class EventListScreen extends React.Component<Props, State> {
 
         return (
             <View style={styles.container}>
+                <StatusBar backgroundColor="blue" barStyle="dark-content" />
                 <EventList
                     onEventPress={this.handleEventPress}
-                    events={toJS(events.list)}
+                    events={events.list}
                 />
             </View>
         )
@@ -56,7 +63,7 @@ class EventListScreen extends React.Component<Props, State> {
 
     handleEventPress = (uid: number) => {
         console.log('---', 'pressed uid', uid)
-        this.props.navigation.navigate('Event', {uid})
+        this.props.navigation.navigate('Event', { uid })
     }
 }
 

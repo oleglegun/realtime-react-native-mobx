@@ -7,8 +7,6 @@ class PeopleStore extends EntitiesStore {
     get sections() {
         const grouped = groupBy(this.list, person => person.firstName.charAt(0))
 
-        console.log('---', grouped)
-
         return Object.entries(grouped).map(([letter, list]) => ({
             title: `${letter}, ${list.length} people`,
             data: list.map(person => ({ key: person.uid, person })),

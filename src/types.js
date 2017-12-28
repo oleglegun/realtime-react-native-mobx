@@ -1,6 +1,6 @@
 /* @flow */
-export type Event = {
-    uid?: string,
+export type EventType = {
+    uid: string,
     title: string,
     when: string,
     where: string,

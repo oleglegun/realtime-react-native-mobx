@@ -26,7 +26,18 @@ export default class NavigationStore extends BaseStore {
         }
     }
 
-    navigate(routeName) {
-        this.dispatch(NavigationActions.navigate({ routeName }))
+    navigate(routeName, params) {
+        this.dispatch(NavigationActions.navigate({ routeName, params }))
+    }
+
+    // Prevent option to return to Log-in screen
+    reset(routeName: string, params: {}) {
+        const action = NavigationActions.reset({
+            // clear all history
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName, params })],
+        })
+
+        this.dispatch(action)
     }
 }

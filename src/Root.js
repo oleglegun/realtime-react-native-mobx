@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import SignIn from './auth/SignIn'
 import { eventList } from './fixtures'
-import EventScreen from './events/EventScreen'
+import EventScreen from './screens/events/Event'
 import EventList from './events/EventList'
 import Style from './styles'
 
@@ -19,7 +19,7 @@ type State = {
 }
 type Props = {}
 
-class Root extends React.Component<Props,State> {
+class Root extends React.Component<Props, State> {
     static defaultProps = {}
 
     state = {

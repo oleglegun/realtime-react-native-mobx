@@ -5,23 +5,21 @@ import {
     Text,
     StyleSheet,
     ImageBackground,
-    TouchableHighlight,
-    Alert,
-    StatusBar,
+    TouchableOpacity,
 } from 'react-native'
-import Style from '../styles'
+import Style from '../../src/styles'
+import type { EventType } from '../types'
 
 type Props = {
-    event: { title: string, when: string, where: string },
-    uid: number,
+    onDeleteEvent: (uid: number) => void,
+    event: EventType,
 }
 
-class EventsScreen extends React.Component<Props> {
+class Event extends React.Component<Props> {
     render() {
         const { event } = this.props
         return (
             <View style={styles.container}>
-                <StatusBar backgroundColor="blue" barStyle="light-content" />
                 <ImageBackground
                     source={require('../../assets/images/event.jpg')}
                     style={styles.image}
@@ -32,30 +30,14 @@ class EventsScreen extends React.Component<Props> {
                     <Text style={styles.whereText}>{event.where}</Text>
                 </View>
                 <View style={styles.actionsContainer}>
-                    <TouchableHighlight
+                    <TouchableOpacity
                         style={styles.deleteButton}
-                        onPress={this.handleDelete}
+                        onPress={this.props.onDeleteEvent}
                     >
                         <Text style={styles.deleteButtonText}>DELETE</Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                 </View>
             </View>
-        )
-    }
-
-    handleDelete = () => {
-        Alert.alert(
-            'Delete Event?',
-            'This action cannot be undone.',
-            [
-                {
-                    text: 'Cancel',
-                    onPress: () => console.log('Cancel Pressed'),
-                    style: 'cancel',
-                },
-                { text: 'OK', onPress: () => console.log('OK Pressed') },
-            ],
-            { cancelable: false }
         )
     }
 }
@@ -101,4 +83,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default EventsScreen
+export default Event

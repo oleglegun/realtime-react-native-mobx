@@ -1,6 +1,12 @@
 /* @flow */
 import * as React from 'react'
-import { View, Text, StyleSheet, SectionList } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    SectionList,
+    TouchableOpacity,
+} from 'react-native'
 import EventCard from './EventCard'
 import Styles from '../styles'
 import EventRow from './EventRow'
@@ -14,7 +20,7 @@ type Section = {
 
 type Props = {
     events: Array<Event>,
-    onEventPress: (uid: number) => void,
+    onEventPress: (uid: string) => void,
 }
 
 const SectionHeader = ({ title }) => (
@@ -71,9 +77,14 @@ class EventList extends React.Component<Props> {
         )
     }
 
-    renderItem({ item }: { item: Event }) {
-        return <EventRow event={item} />
+    renderItem = ({ item }: { item: Event }) => {
+        return (
+            <TouchableOpacity onPress={() => this.props.onEventPress(item.uid)}>
+                <EventRow event={item} />
+            </TouchableOpacity>
+        )
     }
+
     // $FlowFixMe
     renderSectionHeader({ section }) {
         return (
