@@ -12,7 +12,7 @@ const ListsNavigator = TabNavigator({
 const AppNavigator = StackNavigator({
     Auth: { screen: AuthScreen },
     Lists: { screen: ListsNavigator },
-    Event: {screen: Event}
+    Event: { screen: EventScreen },
 })
 
 export default AppNavigator
