@@ -9,13 +9,7 @@ type Props = {
     event: Event,
 }
 
-type State = {}
-
-class EventCard extends React.Component<Props, State> {
-    static defaultProps = {}
-
-    state = {}
-
+class EventCard extends React.Component<Props> {
     render() {
         const { event } = this.props
         return (

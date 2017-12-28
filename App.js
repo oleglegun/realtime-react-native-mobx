@@ -1,7 +1,6 @@
 import React from 'react'
 import AppNavigator from './src/AppNavigator'
 import { addNavigationHelpers } from 'react-navigation'
-import 'firebase'
 import { useStrict } from 'mobx'
 import { Provider, observer } from 'mobx-react'
 import stores from './src/stores'

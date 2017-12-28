@@ -11,7 +11,8 @@ class AuthStore extends BaseStore {
         super(...args)
 
         autorun(() => {
-            const routeName = this.user ? 'Home' : 'Auth'
+            // redirect to Lists on successful log-in
+            const routeName = this.user ? 'Lists' : 'Auth'
 
             // navigate to routeName
             this.getStore('navigation').navigate(routeName)

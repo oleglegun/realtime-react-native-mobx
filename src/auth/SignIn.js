@@ -13,9 +13,10 @@ import {
 } from 'react-native'
 import Style from '../styles'
 import { observable, action } from 'mobx'
-import { observer, inject, type Observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 
 type Props = {
+    // from @inject
     auth: { signIn: (email: string, password: string) => void },
 }
 

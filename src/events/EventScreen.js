@@ -13,15 +13,10 @@ import Style from '../styles'
 
 type Props = {
     event: { title: string, when: string, where: string },
+    uid: number,
 }
 
-type State = {}
-
-class EventsScreen extends React.Component<Props, State> {
-    static defaultProps = {}
-
-    state = {}
-
+class EventsScreen extends React.Component<Props> {
     render() {
         const { event } = this.props
         return (

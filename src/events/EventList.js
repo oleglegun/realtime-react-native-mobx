@@ -14,9 +14,8 @@ type Section = {
 
 type Props = {
     events: Array<Event>,
+    onEventPress: (uid: number) => void,
 }
-
-type State = {}
 
 const SectionHeader = ({ title }) => (
     <View style={styles.sectionHeaderContainer}>
@@ -24,19 +23,13 @@ const SectionHeader = ({ title }) => (
     </View>
 )
 
-class EventList extends React.Component<Props, State> {
+class EventList extends React.Component<Props> {
     static defaultProps = {}
-
-    state = {}
 
     render() {
         const sortedEvents = this.props.events.sort((a, b) => {
-            if (a.title < b.title) {
-                return -1
-            } else if (a.title > b.title) {
-                return 1
-            }
-
+            if (a.title < b.title) return -1
+            else if (a.title > b.title) return 1
             return 0
         })
 
@@ -47,7 +40,6 @@ class EventList extends React.Component<Props, State> {
 
         sortedEvents.forEach((event, index, arr) => {
             if (!section.data) {
-                // debugger
                 // Prev section is finished - start new section
                 section.data = [event]
                 section.title = event.title[0]

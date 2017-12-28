@@ -6,13 +6,7 @@ import style from '../styles'
 
 type Props = { event: { title: string, where: string, when: string } }
 
-type State = {}
-
-class EventRow extends React.PureComponent<Props, State> {
-    static defaultProps = {}
-
-    state = {}
-
+class EventRow extends React.PureComponent<Props> {
     render() {
         const { event } = this.props
         return (

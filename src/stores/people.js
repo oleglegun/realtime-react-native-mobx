@@ -1,32 +1,21 @@
-import BaseStore from './BaseStore'
-import { observable, action, autorun } from 'mobx'
-import firebase from 'firebase'
-import { fbToArr } from './utils'
+import EntitiesStore, { fetchAllHelper } from './EntitiesStore'
+import { action, computed } from 'mobx'
+import groupBy from 'lodash/groupBy'
 
-class PeopleStore extends BaseStore {
-    @observable entities = []
+class PeopleStore extends EntitiesStore {
+    @computed
+    get sections() {
+        const grouped = groupBy(this.list, person => person.firstName.charAt(0))
 
-    constructor(...args) {
-        super(...args)
+        console.log('---', grouped)
 
-        autorun(() => {
-            if (this.getStore('auth').user) {
-                this.loadPeople().then(console.log)
-            }
-        })
+        return Object.entries(grouped).map(([letter, list]) => ({
+            title: `${letter}, ${list.length} people`,
+            data: list.map(person => ({ key: person.uid, person })),
+        }))
     }
 
-    async loadPeople() {
-        let peopleRef = firebase.database().ref('/people')
-
-        const entities = await peopleRef.once('value')
-
-        this.setEntities(fbToArr(entities.val()))
-
-        return 'people loaded!'
-    }
-
-    setEntities = (entities: []) => (this.entities = entities)
+    @action fetchAll = fetchAllHelper('people')
 }
 
 export default PeopleStore
