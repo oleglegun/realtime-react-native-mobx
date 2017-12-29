@@ -4,6 +4,7 @@ import { View, StyleSheet, ActivityIndicator } from 'react-native'
 import type { PeopleStore, INavigation } from '../../types'
 import { inject, observer } from 'mobx-react/index'
 import PeopleList from '../../people/PeopleList'
+import { text, email } from 'react-native-communications'
 
 type Props = {
     // from @inject
@@ -42,7 +43,9 @@ class PeopleListScreen extends React.Component<Props> {
 
     handlePersonPress = (uid: number) => {
         console.log('---', 'personPress', uid)
-        this.props.navigation.navigate('Person', { uid })
+        email(this.props.people.entities[uid].email)
+        // text()
+        // this.props.navigation.navigate('Person', { uid })
     }
 }
 
