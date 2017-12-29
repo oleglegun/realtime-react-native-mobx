@@ -63,7 +63,7 @@ class EventListScreen extends React.Component<Props, State> {
 
     handleEventPress = (uid: number) => {
         console.log('---', 'pressed uid', uid)
-        this.props.navigation.navigate('Event', { uid })
+        this.props.navigation.navigate('EventMap', { uid })
     }
 }
 
