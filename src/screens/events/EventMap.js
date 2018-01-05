@@ -23,10 +23,10 @@ class EventMap extends React.Component<Props> {
         })
 
         if (this.permissionGranted) {
-            const location = await Location.getCurrentPositionAsync({})
+            const { coords } = await Location.getCurrentPositionAsync({})
 
             runInAction(() => {
-                this.location = location
+                this.location = coords
             })
         }
     }
@@ -36,13 +36,14 @@ class EventMap extends React.Component<Props> {
         if (!this.permissionGranted) return <Text>Permission denied</Text>
         if (!this.location) return <Text>Location unknown</Text>
 
+        console.log('--- location:', this.location)
         return (
             <MapView
                 style={styles.map}
                 initialRegion={{
                     ...this.location,
                     latitudeDelta: 0.01,
-                    longitudeData: 0.1,
+                    longitudeDelta: 0.1,
                 }}
             >
                 <MapView.Marker coordinate={this.location} title={'SF'} />
