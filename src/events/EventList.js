@@ -10,16 +10,16 @@ import {
 import EventCard from './EventCard'
 import Styles from '../styles'
 import EventRow from './EventRow'
-import type { Event } from '../types'
+import type { EventType } from '../types'
 
 type Section = {
-    data: $ReadOnlyArray<Event>,
+    data: $ReadOnlyArray<EventType>,
     count: number,
     title: string,
 }
 
 type Props = {
-    events: Array<Event>,
+    events: Array<EventType>,
     onEventPress: (uid: string) => void,
 }
 

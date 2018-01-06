@@ -1,6 +1,7 @@
 import EntitiesStore, { fetchAllHelper } from './EntitiesStore'
 import { action, computed } from 'mobx'
 import groupBy from 'lodash/groupBy'
+import firebase from 'firebase'
 
 class PeopleStore extends EntitiesStore {
     @computed
@@ -14,6 +15,14 @@ class PeopleStore extends EntitiesStore {
     }
 
     @action fetchAll = fetchAllHelper('people')
+
+    @action
+    updatePerson = (uid: string, payload: {}) => {
+        firebase
+            .database()
+            .ref(`people/${uid}`)
+            .update(payload)
+    }
 }
 
 export default PeopleStore

@@ -45,7 +45,9 @@ class PeopleListScreen extends React.Component<Props> {
         console.log('---', 'personPress', uid)
         // email([this.props.people.entities[uid].email], null, null, null, 'text')
         // text('89001235673', 'Body')
-        phonecall('81231231212', true)
+        // phonecall('81231231212', true)
+
+        this.props.navigation.navigate('Person', { uid })
     }
 }
 

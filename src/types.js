@@ -9,6 +9,7 @@ export type EventType = {
 }
 
 export type Person = {
+    avatar: ?string,
     email: string,
     firstName: string,
     lastName: string,
@@ -18,9 +19,22 @@ export type PeopleStore = {
     entities: Array<Person>,
     isLoading: boolean,
     isLoaded: boolean,
-    fetchAll: () => void
+    fetchAll: () => void,
 }
 
 export interface INavigation {
-    navigate: (routeName: string, props: {}) => void
+    navigate: (routeName: string, props?: {}) => void;
+    state: {params: {
+        uid: ?string
+        }}
+}
+
+export interface IPeople {
+    updatePerson: (uid: string, payload: {}) => void
+}
+
+export type EntitiesStore = {
+    entities: {},
+    loading: boolean,
+    loaded: boolean
 }

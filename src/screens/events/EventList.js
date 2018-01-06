@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { inject, observer } from 'mobx-react'
 import EventList from '../../events/EventList'
-import type { Event } from '../../types'
+import type { Event, INavigation } from '../../types'
 import { toJS } from 'mobx'
 
 type Props = {
@@ -21,6 +21,9 @@ type Props = {
         loaded: boolean,
         list: Array<Event>,
     },
+
+    //from context
+    navigation: INavigation,
 }
 
 type State = {}
