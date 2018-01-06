@@ -22,6 +22,11 @@ class PeopleStore extends EntitiesStore {
             .database()
             .ref(`people/${uid}`)
             .update(payload)
+            .then(() => {
+                console.log('---', 'uploaded!')
+                this.fetchAll()
+                this.stores.navigation.reset('Lists')
+            })
     }
 }
 

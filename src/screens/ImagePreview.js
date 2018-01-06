@@ -60,7 +60,7 @@ class ImagePreviewScreen extends React.Component<Props, State> {
 
         this.props.people.updatePerson(uid, { avatar })
 
-        this.props.navigation.navigate('Person', { uid })
+        console.log('---', this.props.navigation)
     }
 
     handleRetake = () => {
